@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    max-width: 600px;
+    color:darkolivegreen
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 4rem repeat(5, 1fr);
+    max-width: 600px;
+    height: 400px;
+    color: seagreen;
+}
+.grid-item {
+    border: 2px solid lightgoldenrodyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
