@@ -1,7 +1,10 @@
 h1 {
     text-align: center;
     max-width: 600px;
-    color:darkolivegreen
+    color:darkolivegreen;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+
 }
 .grid-container {
     display: grid;
@@ -15,4 +18,13 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.grid-item:nth-child(1){
+    grid-column-start: 2;
+}
+
+.days-of-the-week, .period {
+    color: white;
+    background-color:darkgreen;
 }
