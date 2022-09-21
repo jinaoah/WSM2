@@ -6,6 +6,7 @@ h1 {
     margin-top: 2rem;
 
 }
+
 .grid-container {
     display: grid;
     grid-template-columns: 4rem repeat(5, 1fr);
@@ -20,11 +21,38 @@ h1 {
     align-items: center;
 }
 
-.grid-item:nth-child(1){
-    grid-column-start: 2;
-}
-
 .days-of-the-week, .period {
     color: white;
     background-color:darkgreen;
 }
+
+.grid-item:nth-child(1){
+    grid-column-start: 2;
+}
+
+.grid-item:nth-child(10){ /*(php,py)*/
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column: 5/6;
+}
+
+.grid-item:nth-child(18) { /*wsm*/
+    grid-row: 4 /6;
+    grid-column: 2/3;
+}
+
+.grid-item:nth-child(20) {
+    grid-row: 4/6;
+    grid-column: 4/5;
+}
+
+.grid-item:nth-child(21) {
+    grid-row: 4/6;
+    grid-column: 5/6;
+}
+
+.grid-item:nth-child(31) {
+    grid-row: 6/8;
+    grid-column: 6/7;
+}
+
