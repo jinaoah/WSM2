@@ -3,7 +3,6 @@ let now = new Date();
 
 //현재 년
 let year = now.getFullYear();
-
 //현재 월
 let month = now.getMonth(); //0~11
 month ++;
@@ -51,3 +50,35 @@ const setCalendar = (year, month) => {
     firstDateDiv.style.gridColumnStart = firstDay + 1;
 }
 setCalendar(year, month);
+
+//이전 달력으로 전환
+const prevMonth = () => {
+    if (month==1) {
+        year--;
+        month = 12;
+    } else {
+        month--;
+    }
+    setCalendar(year, month);
+}
+//다음 달력으로 전환
+const nextMonth = () => {
+    if (month==12) {
+        year++;
+        month = 1;
+    } else {
+        month++;        
+    }
+    setCalendar(year, month);
+}
+
+const initButton = () => {
+
+    //js event 리스너
+    // prev-btn.addEventListener('click', prevMonth);
+    // next-btn.addEventListener('click', nextMonth);
+    prev_btn.onclick = prevMonth;
+    next_btn.onclick = nextMonth;
+}
+
+initButton();
