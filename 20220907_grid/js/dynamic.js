@@ -84,6 +84,11 @@ const initButton = () => {
 initButton();
 
 //급식 API , AJAX 급식데이터 가져오자
+//.date-grid-container > .grid-item에 mouseover 이벤트 발생->handler 지정
+//handler에서 year, month, date 정보를 가져와서 url 생성
+//AJAX로 url 호출
+//응답오면, #breakfast, #lunch, #dinner에 출력
+
 const KEY = "17af9ee1281d48e5983bcde5fe4dab01";
 console.log(KEY)
 
