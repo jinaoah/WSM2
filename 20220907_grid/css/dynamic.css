@@ -45,3 +45,17 @@ h1 {
 .first {
     grid-column-start: 5;
 }
+
+/* 조식,중식,석식 */
+.menu-grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(min-content, max-content));
+    row-gap: 20px;
+}
+.breakfast,
+.lunch,
+.dinner {
+    width: 300px;
+    border-radius: 8px;
+    background-color:aliceblue;
+}
