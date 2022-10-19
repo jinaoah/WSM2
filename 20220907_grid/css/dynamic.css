@@ -1,3 +1,8 @@
+main {
+    display: flex;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
 .flex-container {
     display: flex;
     justify-content: center;
@@ -11,7 +16,7 @@
     border: 2px solid #6e6e6e;
     background-color: aquamarine;
     border-radius: 20px;
-    padding: 8px;
+    padding: 12px;
 }
 
 h1 {
@@ -28,7 +33,7 @@ h1 {
 
 #calendar {
     max-width: 800px;
-    height: 600px;
+    /* height: 600px; */
     font-size: 1.4rem;
 }
 
@@ -51,6 +56,10 @@ h1 {
     display: grid;
     grid-template-rows: repeat(3, minmax(min-content, max-content));
     row-gap: 20px;
+}
+.menu-grid-container h1 {
+    text-align: left;
+    font-size: 1.25rem;
 }
 .breakfast,
 .lunch,
