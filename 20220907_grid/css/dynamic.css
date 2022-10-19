@@ -60,10 +60,12 @@ h1 {
 .menu-grid-container h1 {
     text-align: left;
     font-size: 1.25rem;
+    padding: 0;
 }
 .breakfast,
 .lunch,
 .dinner {
+    padding: 1.4rem;
     width: 300px;
     border-radius: 8px;
     background-color:aliceblue;
