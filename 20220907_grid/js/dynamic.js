@@ -111,10 +111,22 @@ const handler = (event) => {
 //AJAX로 url 호출
 const getMenuByAPI = (url) => {
     //XMLHttpRequest
+    let xhr = new XMLHttpRequest();
     
-    //요청을 보낼 방식, url, 비동기여부 설정
-    //요청 전송
     //callback
+    xhr.onreadystatechange = () => {
+        if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+            //success
+            console.log('성공')
+            console.log(xhr.response)
+        }
+    }
+    //요청을 보낼 방식, url, 비동기여부 설정
+    xhr.open("GET", url, true);
+
+    //요청 전송
+    xhr.send();
+    
     
 }
 
