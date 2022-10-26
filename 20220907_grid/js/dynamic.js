@@ -104,8 +104,7 @@ const handler = (event) => {
     url += `&SD_SCHUL_CODE=${SD_SCHUL_CODE}`;
     url += `&MLSV_YMD=${MLSV_YMD}`;
 
-    console.log(url)
-
+    // console.log(url)
     getMenuByAPI(url)
 }
 //AJAX로 url 호출
@@ -117,17 +116,38 @@ const getMenuByAPI = (url) => {
     xhr.onreadystatechange = () => {
         if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
             //success
-            console.log('성공')
-            console.log(xhr.response)
+            console.log('성공');
+            // console.log(xhr.response)
+            showMenu(xhr.response);
         }
     }
     //요청을 보낼 방식, url, 비동기여부 설정
     xhr.open("GET", url, true);
 
     //요청 전송
-    xhr.send();
+    xhr.send();    
+}
+const showMenu = (jsonString) => {
+    console.log(jsonString);
+    //jsonString -> json
+    let json = JSON.parse(jsonString); //JSON.stringify() : json -> String
+    console.log(json);
+    //json -> 조식, 중식, 석식
+    let breakfastMenu = "없음"; 
+    let lunchMenu = "없음"; 
+    let dinnerMenu = "없음"; 
     
-    
+    try {
+        breakfastMenu = json["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"];
+        lunchMenu = json["mealServiceDietInfo"][1]["row"][1]["DDISH_NM"];
+        dinnerMenu = json["mealServiceDietInfo"][1]["row"][2]["DDISH_NM"];
+    } catch {
+        
+    }
+    //조식 중식, 석식 -> html
+    breakfast.innerHTML = breakfastMenu;
+    lunch.innerHTML = lunchMenu;
+    dinner.innerHTML = dinnerMenu;
 }
 
 //응답오면, #breakfast, #lunch, #dinner에 출력
