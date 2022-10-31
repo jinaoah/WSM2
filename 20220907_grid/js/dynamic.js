@@ -151,7 +151,7 @@ const showMenu = (jsonString) => {
     
     try {
         dinnerMenu = json["mealServiceDietInfo"][1]["row"][2]["DDISH_NM"];
-        dinnerMenu = dinnerMenu.replace(/\([\d\.]+\)/g, "");
+        dinnerMenu = dinnerMenu.replace(/\([0-9\.]+\)/g, "");
     } catch{    }
     //조식 중식, 석식 -> html
     breakfast.innerHTML = breakfastMenu;
@@ -166,6 +166,5 @@ let gridItems = dateGridContainerDiv.getElementsByClassName('grid-item');
 for(let gridItem of gridItems){
     // console.log(gridItem)
     gridItem.onmouseover = handler; //mouseover일 때 이벤트 처리
-    
-    
+
 }
