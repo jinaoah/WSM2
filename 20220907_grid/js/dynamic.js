@@ -139,11 +139,20 @@ const showMenu = (jsonString) => {
     
     try {
         breakfastMenu = json["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"];
+        //메뉴 이름만 나오게 하기(상세사항 삭제)
+        //정규표현식
+        breakfastMenu = breakfastMenu.replace(/\([0123456789\.]+\)/g,"");
+    } catch {    }
+    
+    try {
         lunchMenu = json["mealServiceDietInfo"][1]["row"][1]["DDISH_NM"];
+        lunchMenu = lunchMenu.replace(/\([0-9\.]+\)/g, "");
+    } catch {    }
+    
+    try {
         dinnerMenu = json["mealServiceDietInfo"][1]["row"][2]["DDISH_NM"];
-    } catch {
-        
-    }
+        dinnerMenu = dinnerMenu.replace(/\([\d\.]+\)/g, "");
+    } catch{    }
     //조식 중식, 석식 -> html
     breakfast.innerHTML = breakfastMenu;
     lunch.innerHTML = lunchMenu;
