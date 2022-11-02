@@ -7,6 +7,27 @@ let year = now.getFullYear();
 let month = now.getMonth(); //0~11
 month ++;
 
+const handler = (event) => {
+    //handler에서 year, month, date 정보를 가져와서 url 생성
+    let date = event.target.innerHTML;
+
+    const KEY = "17af9ee1281d48e5983bcde5fe4dab01";
+
+    const ATPT_OFCDC_SC_CODE = "B10" //서울특별시교육청
+    const SD_SCHUL_CODE = "7010569" //미림여자정보과학고
+    let MLSV_YMD = `${year}${month.toString().padStart(2,"0")}${date.padStart(2,"0")}`;
+
+    let url = `https://open.neis.go.kr/hub/mealServiceDietInfo`;
+    url += `?KEY=${KEY}`;
+    url += `&Type=json`;
+    url += `&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}`;
+    url += `&SD_SCHUL_CODE=${SD_SCHUL_CODE}`;
+    url += `&MLSV_YMD=${MLSV_YMD}`;
+
+    // console.log(url)
+    getMenuByAPI(url)
+}
+
 const setCalendar = (year, month) => {
     //1일에 해당하는 요일
     let firstDate = new Date(year, month-1, 1); 
@@ -48,6 +69,13 @@ const setCalendar = (year, month) => {
     //1일에 해당하는 div를 grid-column-start: 요일+1;
     let firstDateDiv = dateGridContainerDiv.getElementsByClassName("grid-item")[0]
     firstDateDiv.style.gridColumnStart = firstDay + 1;
+
+    let gridItems = dateGridContainerDiv.getElementsByClassName("grid-item");
+    //마우스 오버일 때 handler 함수 호출 !
+    for(let gridItem of gridItems){
+    // console.log(gridItem)
+    gridItem.onmouseover = handler; //mouseover일 때 이벤트 처리
+}
 }
 setCalendar(year, month);
 
@@ -72,6 +100,7 @@ const nextMonth = () => {
     setCalendar(year, month);
 }
 
+//클릭 시 이벤트
 const initButton = () => {
 
     //js event 리스너
@@ -87,27 +116,8 @@ initButton();
 //.date-grid-container > .grid-item에 mouseover 이벤트 발생->handler 지정
 
 
-const handler = (event) => {
-    //handler에서 year, month, date 정보를 가져와서 url 생성
-    let date = event.target.innerHTML;
 
-    const KEY = "17af9ee1281d48e5983bcde5fe4dab01";
-
-    const ATPT_OFCDC_SC_CODE = "B10" //서울특별시교육청
-    const SD_SCHUL_CODE = "7010569" //미림여자정보과학고
-    let MLSV_YMD = `${year}${month.toString().padStart(2,"0")}${date.padStart(2,"0")}`;
-
-    let url = `https://open.neis.go.kr/hub/mealServiceDietInfo`;
-    url += `?KEY=${KEY}`;
-    url += `&Type=json`;
-    url += `&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}`;
-    url += `&SD_SCHUL_CODE=${SD_SCHUL_CODE}`;
-    url += `&MLSV_YMD=${MLSV_YMD}`;
-
-    // console.log(url)
-    getMenuByAPI(url)
-}
-//AJAX로 url 호출
+//AJAX로 url 호출(handler 함수 내에서 호출)
 const getMenuByAPI = (url) => {
     //XMLHttpRequest
     let xhr = new XMLHttpRequest();
@@ -163,8 +173,3 @@ const showMenu = (jsonString) => {
 let dateGridContainerDiv = document.getElementsByClassName('date-grid-container')[0];
 let gridItems = dateGridContainerDiv.getElementsByClassName('grid-item');
 
-for(let gridItem of gridItems){
-    // console.log(gridItem)
-    gridItem.onmouseover = handler; //mouseover일 때 이벤트 처리
-
-}
