@@ -55,11 +55,11 @@ const addNow = (mainCardId) => {
 }
 addNow('main-card');
 
-const showMenu = (jsonString) => {
-  console.log(jsonString);
-  //jsonString -> json
-  let json = JSON.parse(jsonString); //JSON.stringify() : json -> String
-  console.log(json);
+const showMenu = (json) => {
+  // console.log(jsonString);
+  // //jsonString -> json
+  // let json = JSON.parse(jsonString); //JSON.stringify() : json -> String
+  // console.log(json);
   //json -> 조식, 중식, 석식
   let breakfastMenu = "없음"; 
   let lunchMenu = "없음"; 
