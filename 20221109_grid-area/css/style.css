@@ -1,5 +1,16 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    "header header  header"
+    "nav    main    side-a"
+    "footer main    side-a";
+    grid-template-columns: 1fr 3fr 1fr;
+}
 header {
     border: 1px solid gray;
+}
+.header {
+    grid-area: header;
 }
 nav {
     border: 1px solid gray;
@@ -7,12 +18,21 @@ nav {
 aside {
     border: 1px solid gray;
 }
+.aside-a {
+    grid-area: side-a;
+}
 main {
     border: 1px solid gray;
+}
+.main {
+    grid-area: main;
 }
 /* header {
     border: 1px solid gray;
 } */
 footer {
     border: 1px solid gray;
+}
+.footer {
+    grid-area: footer;
 }
